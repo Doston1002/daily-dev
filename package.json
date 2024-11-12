@@ -23,11 +23,11 @@
     "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-multi-carousel": "^2.8.2",
+    "react-multi-carousel": "^2.8.5",
     "styled-components": "^5.3.8"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "22.9.0",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
