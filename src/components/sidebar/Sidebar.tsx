@@ -1,4 +1,3 @@
-
 import { Avatar, Box, Button, Divider, Typography } from '@mui/material';
 import Image from 'next/image';
 import { Fragment } from 'react';

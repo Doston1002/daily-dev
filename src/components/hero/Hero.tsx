@@ -1,25 +1,25 @@
-import { Avatar, Box, Typography } from '@mui/material'
 import 'react-multi-carousel/lib/styles.css';
+import { Avatar, Box, Typography } from '@mui/material';
 import Carousel from 'react-multi-carousel';
-import React from 'react'
 import Image from 'next/image';
-import {format} from 'date-fns'
+import { format } from 'date-fns';
+
 const Hero = () => {
-  return (
-    <Box width={'100%'} height={'70vh'} sx={{backgroundColor:'red'}}>
-        <Carousel responsive={{
-            mobile:{
-                breakpoint:{max:4000, min:0},
-                items:1,
-
-            }
-        }}>
-            {data.map(item =>(
-                <Box key={item.image}>
-                    <Box sx={{position:'relative', width:'100%', height:'70vh'}}>
-
-                    <Image src={item.image} alt={item.title} fill style={{objectFit:'cover'}}/>
-                    <Box
+	return (
+		<Box width={'100%'} height={'70vh'} sx={{ backgroundColor: 'red' }}>
+			<Carousel
+				responsive={{
+					mobile: {
+						breakpoint: { max: 4000, min: 0 },
+						items: 1,
+					},
+				}}
+			>
+				{data.map(item => (
+					<Box key={item.image}>
+						<Box sx={{ position: 'relative', width: '100%', height: '70vh' }}>
+							<Image src={item.image} alt={item.title} fill style={{ objectFit: 'cover' }} />
+							<Box
 								sx={{
 									position: 'absolute',
 									top: 0,
@@ -31,28 +31,32 @@ const Hero = () => {
 									backgroundColor: 'rgba(0, 0, 0, .6)',
 								}}
 							/>
-                            <Box position={'relative'} width={{xs:'100%', sm:'70%'}} color={'white'} sx={{ fontSize: { xs: '30px', md: '50px' }, top:'50%', transform:'translateY(-50%)', paddingLeft:{xs:'10px', sm:'50px'}}}>
-
-                   <Typography variant='h2'>{item.title}</Typography>
-                   <Typography  variant='h5'>{item.exerpt}</Typography>
-                   <Box sx={{display:'flex', gap:'10px', marginTop:'20px'}}>
-                        <Avatar alt={item.author.name} src={item.author.image}/>
-                   <Box>
-                        <Typography>{item.author.name}</Typography>
-                            <Box>
-                            {format(new Date(), 'dd MMM, yyyy')}&#x2022; 10 minut read
-                            </Box>
-                   </Box>
-                   </Box>
-                            </Box>
-                    </Box>
-                </Box>
-            ))}
-        </Carousel>
-    </Box>
-  )
-}
-
+							<Box
+								width={{ xs: '100%', md: '70%' }}
+								position={'relative'}
+								color={'white'}
+								sx={{ top: '50%', transform: 'translateY(-50%)', paddingLeft: { xs: '10px', md: '50px' } }}
+								zIndex={999}
+							>
+								<Typography sx={{ fontSize: { xs: '30px', md: '50px' } }}>{item.title}</Typography>
+								<Typography color={'gray'} sx={{ fontSize: { xs: '20px', md: '25px' } }}>
+									{item.exerpt}
+								</Typography>
+								<Box sx={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
+									<Avatar alt={item.author.name} src={item.author.image} />
+									<Box>
+										<Typography>{item.author.name}</Typography>
+										<Box>{format(new Date(), 'dd MMM, yyyy')} &#x2022; 10min read</Box>
+									</Box>
+								</Box>
+							</Box>
+						</Box>
+					</Box>
+				))}
+			</Carousel>
+		</Box>
+	);
+};
 export default Hero;
 
 const data = [
