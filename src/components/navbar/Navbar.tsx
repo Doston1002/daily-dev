@@ -19,7 +19,6 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import logo from '../../../public/logo.svg'
-import logoName from '../../../public/daily.svg'
 interface Props {
 	window?: () => Window;
 }
