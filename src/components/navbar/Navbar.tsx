@@ -16,9 +16,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import { navItems } from 'src/config/constants';
 import CloseIcon from '@mui/icons-material/Close';
-import AdjustIcon from '@mui/icons-material/Adjust';
 import { useRouter } from 'next/router';
-
+import Image from 'next/image';
+import logo from '../../../public/logo.svg'
+import logoName from '../../../public/daily.svg'
 interface Props {
 	window?: () => Window;
 }
@@ -37,8 +38,9 @@ const Navbar = ({ window }: Props) => {
 		<Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
 			<Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingX: '20px' }}>
 				<Box sx={{ my: 2, display: 'flex', alignItems: 'center', gap: '5px' }}>
-					<AdjustIcon />
-					<Typography variant='h6'>Sammi</Typography>
+
+				<Image src={logo} alt='logo'  height={30} width={50} style={{ objectFit: 'cover', borderRadius: '10px' }} />
+				<Typography variant='h6'>daily.dev</Typography>
 				</Box>
 				<CloseIcon />
 			</Box>
@@ -69,10 +71,8 @@ const Navbar = ({ window }: Props) => {
 						<MenuIcon />
 					</IconButton>
 					<Box sx={{ my: 2, alignItems: 'center', gap: '5px', flexGrow: 1, display: { xs: 'none', sm: 'flex' } }}>
-						<AdjustIcon />
-						<Typography variant='h6' component='div'>
-							Sammi
-						</Typography>
+					<Image src={logo} alt='logo'  height={30} width={50} style={{ objectFit: 'cover', borderRadius: '10px' }} />
+					<Typography variant='h6'>daily.dev</Typography>
 					</Box>
 
 					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>

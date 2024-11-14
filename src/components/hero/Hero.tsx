@@ -47,6 +47,7 @@ const Hero = ({blogs}: HeroProps) => {
 								<Box sx={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
 									<Avatar alt={item.author.name} src={item.author.avatar.url} />
 									<Box>
+						
 										<Typography>{item.author.name}</Typography>
 										<Box>{format(new Date(item.createdAt), 'dd MMM, yyyy')} &#x2022; {calculateEstimatedTimeToRead(item.description.text)} min read</Box>
 									</Box>

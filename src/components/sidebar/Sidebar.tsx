@@ -17,6 +17,7 @@ const Sidebar = ({ latestBlogs, categories }: SidebarProps) => {
 						{latestBlogs.map(item => (
 							<Box sx={{ cursor: 'pointer' }} onClick={() => router.push(`/blog/${item.slug}`)} key={item.id} marginTop={'20px'}>
 								<Box sx={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+		
 									<Image
 										src={item.image.url}
 										alt={item.title}

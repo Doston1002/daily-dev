@@ -27,6 +27,7 @@ const Content = ({ blogs }: ContentProps) => {
 					<Box position={'relative'} width={'100%'} height={{ xs: '30vh', md: '50vh' }}>
 						<Image src={item.image.url} alt={item.title} fill style={{ objectFit: 'cover', borderRadius: '10px' }} />
 					</Box>
+
 					<Typography variant='h4' marginTop={'30px'}>
 						{item.title}
 					</Typography>

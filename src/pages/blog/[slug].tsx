@@ -31,7 +31,7 @@ const DetailedBlogsPage = ({ blog, latestBlogs, categories }: DetailedBlogsPageP
 							height={{ xs: '30vh', md: '50vh' }}
 							marginBottom={'20px'}
 						>
-							<Image src={blog.image.url} alt={blog.title}  height={100} width={100} style={{ objectFit: 'cover', borderRadius: '10px' }} />
+							<Image src={blog.image.url} alt={blog.title}  height={100} width={100} style={{ width:'100%', height:'100%', objectFit: 'cover', borderRadius: '10px' }} />
 						</Box>
 						<Box display={'flex'} flexDirection={'column'} rowGap={'10px'}>
 							<Box sx={{ display: 'flex', gap: '10px', marginTop: '20px' }}>
@@ -45,7 +45,10 @@ const DetailedBlogsPage = ({ blog, latestBlogs, categories }: DetailedBlogsPageP
 									</Box>
 								</Box>
 							</Box>
-							<Typography variant='h3'>{blog.title}</Typography>
+							<Typography variant="h5" 
+  sx={{
+    typography: { xs: 'h5', sm: 'h4' }
+  }}>{blog.title}</Typography>
 							<Typography color={'gray'}>{blog.excerpt}</Typography>
 							<Divider />
 							<div style={{ opacity: '.8' }} dangerouslySetInnerHTML={{ __html: blog.description.html }} />
