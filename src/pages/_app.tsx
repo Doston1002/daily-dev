@@ -1,31 +1,52 @@
-import * as React from 'react';
-import Head from 'next/head';
-import { AppProps } from 'next/app';
-import { CacheProvider, EmotionCache } from '@emotion/react';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import theme from '../helpers/theme';
-import createEmotionCache from '../helpers/create-emotion-cashe'; // Import this utility
 
-// Client-side cache, shared for the whole session of the user in the browser.
+import 'src/styles/globals.css';
+import 'nprogress/nprogress.css';
+
+import type { AppProps } from 'next/app';
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import createEmotionCache from 'src/helpers/create-emotion-cashe';
+import Head from 'next/head';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from 'src/helpers/theme';
+import { CssBaseline } from '@mui/material';
+import NProgress from 'nprogress';
+import { useEffect } from 'react';
+import Router from 'next/router';
+
 const clientSideEmotionCache = createEmotionCache();
 
-interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
+export interface MyAppProps extends AppProps {
+	emotionCache?: EmotionCache;
 }
 
-export default function MyApp(props: MyAppProps) {
-  const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
-  return (
-    <CacheProvider value={emotionCache}>
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstarts an elegant, consistent, and simple baseline to build upon */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
-  );
+function MyApp(props: MyAppProps) {
+	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+
+	useEffect(() => {
+		const handleRouteStart = () => NProgress.start();
+		const handleRouteDone = () => NProgress.done();
+
+		Router.events.on('routeChangeStart', handleRouteStart);
+		Router.events.on('routeChangeComplete', handleRouteDone);
+		Router.events.on('routeChangeError', handleRouteDone);
+
+		return () => {
+			Router.events.off('routeChangeStart', handleRouteStart);
+			Router.events.off('routeChangeComplete', handleRouteDone);
+			Router.events.off('routeChangeError', handleRouteDone);
+		};
+	}, []);
+
+	return (
+		<CacheProvider value={emotionCache}>
+			<Head>
+				<meta name='viewport' content='initial-scale=1, width=device-width' />
+			</Head>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				<Component {...pageProps} />
+			</ThemeProvider>
+		</CacheProvider>
+	);
 }
+export default MyApp;

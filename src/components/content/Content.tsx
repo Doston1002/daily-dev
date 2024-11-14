@@ -11,6 +11,7 @@ const Content = ({ blogs }: ContentProps) => {
 	return (
 		<Box width={{ xs: '100%', md: '70%' }}>
 			{blogs.map(item => (
+			
 				<Box
 					key={item.id}
 					sx={{

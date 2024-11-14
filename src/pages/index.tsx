@@ -1,3 +1,4 @@
+import SEO from '@/layout/seo/seo';
 import { Box } from '@mui/system';
 import { GetServerSideProps } from 'next';
 
@@ -9,6 +10,7 @@ import { BlogsService } from 'src/services/blog.servise';
 
 const IndexPage = ({ blogs, latestBlogs, categories }: HomePageProps) => {
 	return (
+		<SEO>
 		<Layout>
 			<Hero blogs={blogs.slice(0,3)} />
 			<Box sx={{ display: 'flex', gap: '20px', flexDirection: { xs: 'column', md: 'row' }, padding: '20px' }}>
@@ -16,6 +18,7 @@ const IndexPage = ({ blogs, latestBlogs, categories }: HomePageProps) => {
 				<Content blogs={blogs} />
 			</Box>
 		</Layout>
+		</SEO>
 	);
 };
 
