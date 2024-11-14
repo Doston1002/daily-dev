@@ -8,7 +8,7 @@ import { calculateEstimatedTimeToRead } from '@/helpers/time.format';
 
 const Hero = ({blogs}: HeroProps) => {
 	return (
-		<Box width={'100%'} height={'70vh'} sx={{ backgroundColor: 'red' }}>
+		<Box width={'100%'} mt={`9vh`} height={'70vh'} >
 			<Carousel
 				responsive={{
 					mobile: {
